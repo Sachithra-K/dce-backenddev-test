@@ -1,0 +1,78 @@
+
+create table Customer (
+
+UserId int identity (1,1) primary key,
+Username varchar (20) Not null,
+Email varchar (50) Not null,
+FirstName varchar (20) Not null,
+LastName varchar (20) Not null,
+CreateOn varchar (20),
+Status varchar (20), 
+);
+
+insert into Customer (Username,Email,FirstName,LastName,CreateOn,Status)
+values ('Michal Lawson','michael.lawson@reqres.in','Michael','Lawson','24-01-2023','active');
+
+
+
+create table P_Order (
+OrderId int identity (1,1) primary key,
+ProductId int ,
+OrderStatus int  Not null,
+OrderType int Not null,
+OrderBy int Not null,
+OrderedOn varchar (20),
+SippedOn varchar (20),
+Status varchar (20),
+
+);
+
+create table Product (
+ProductId int identity (1,1) primary key,
+ProductName varchar (50)  Not null,
+UnitPrice decimal Not null,
+SupplierId int,
+CreatedOn datetime ,
+Status varchar (20),
+);
+
+create table Supplier (
+SupplierId int identity (1,1) primary key,
+SupplierName varchar (50)  Not null,
+CreatedOn datetime ,
+Status varchar (20),
+);
+
+create table O_User (
+OrderBy  int identity (1,1) primary key,
+fullname varchar (20) not null,
+Email varchar (30)not null,
+);
+
+
+
+select*
+from Customer
+select*
+from P_Order
+select*
+from Product 
+select*
+from Supplier
+select*
+from O_User
+
+select UserId,Username,Email,FirstName,LastName,CreateOn,Status,(case When [Status]= 'active' then 1 else 0 end )
+[Boolean Status]
+from  Customer
+select OrderId,ProductId,OrderStatus,OrderType,OrderBy,OrderedOn,SippedOn,Status,(case When [Status]= 'active' then 1 else 0 end )
+[Boolean Status]
+from  P_Order
+select ProductId,ProductName,UnitPrice,SupplierId,CreatedOn,Status,(case When [Status]= 'active' then 1 else 0 end )
+[Boolean Status]
+from  Product
+select SupplierId,SupplierName,CreatedOn ,Status,(case When [Status]= 'active' then 1 else 0 end )
+[Boolean Status]
+from Supplier
+
+
